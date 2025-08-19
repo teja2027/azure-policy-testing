@@ -1,0 +1,5 @@
+.terraform*
+.terragrunt*
+terraform.tfstate
+local.dev
+tfstate.json

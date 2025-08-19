@@ -1,0 +1,158 @@
+- name: inherit-finops-tags
+  policy_assignments:
+    - policy_definition_name: Inherit a tag from the resource group
+      policy_assignment_display_name: Inherit the ApplicationName tag from the resource group
+      parameters:
+        tagName:
+          value: ApplicationName
+    - policy_definition_name: Inherit a tag from the resource group
+      policy_assignment_display_name: Inherit the ApplicationOwner tag from the resource group
+      parameters:
+        tagName:
+          value: ApplicationOwner
+    - policy_definition_name: Inherit a tag from the resource group
+      policy_assignment_display_name: Inherit the BusinessUnit tag from the resource group
+      parameters:
+        tagName:
+          value: BusinessUnit
+    - policy_definition_name: Inherit a tag from the resource group
+      policy_assignment_display_name: Inherit the FinancialEntity tag from the resource group
+      parameters:
+        tagName:
+          value: FinancialEntity
+    - policy_definition_name: Inherit a tag from the resource group
+      policy_assignment_display_name: Inherit the Environment tag from the resource group
+      parameters:
+        tagName:
+          value: Environment
+    - policy_definition_name: Inherit a tag from the resource group
+      policy_assignment_display_name: Inherit the CostCenter tag from the resource group
+      parameters:
+        tagName:
+          value: CostCenter
+    - policy_definition_name: Inherit a tag from the resource group
+      policy_assignment_display_name: Inherit the ProfitCenter tag from the resource group
+      parameters:
+        tagName:
+          value: ProfitCenter
+  scopes:
+  - management_group_name: tms-mg
+  - management_group_name: tms-legacy-mg
+
+- name: allowed-locations
+  policy_assignments:
+    - policy_definition_name: Allowed locations
+      policy_type: builtin
+      policy_assignment_display_name: Allowed locations
+      parameters:
+        listOfAllowedLocations:
+          value:
+          - northcentralus
+          - northeurope
+          - eastasia
+      description: This policy assignment restricts creation of resources to a restricted list of locations.
+  scopes:
+  - management_group_name: tms-mg
+
+# Business Landing Zone Management Group
+
+# - name: bu-lz
+#   policy_assignments:
+#   - policy_definition_name: Guest accounts with owner permissions on Azure resources should be removed
+#   - policy_definition_name: Guest accounts with write permissions on Azure resources should be removed
+#   - policy_definition_name: Do not allow deletion of resource types
+#     parameters:
+#       listOfResourceTypesDisallowedForDeletion:
+#         value: []
+#   - policy_definition_name: Secrets should not be active for longer than the specified number of days
+#     parameters:
+#       maximumValidityInDays:
+#         value: 365
+#   - policy_definition_name: Secrets should have more than the specified number of days before expiration
+#     parameters:
+#       minimumDaysBeforeExpiration:
+#         value: 365
+#   - policy_definition_name: Secrets should have the specified maximum validity period
+#     parameters:
+#       maximumValidityInDays:
+#         value: 365
+#   - policy_definition_name: Keys should not be active for longer than the specified number of days
+#     parameters:
+#       maximumValidityInDays:
+#         value: 365
+#   scopes:
+#   - management_group_name: mg-havizerotrust-business-landingzones
+
+## Corporate Technology landing zone management group
+
+# - name: lz-corptech
+#   policy_assignments:
+#   - policy_definition_name: Allowed virtual machine size SKUs
+#     parameters:
+#       listOfAllowedSKUs:
+#         value: []       
+#   scopes:
+#   - management_group_name: mg-havizerotrust-corptech-landingzone
+    
+## TMS landing zone management group
+
+# - name: lz-tms
+#   policy_assignments:
+#   - policy_definition_name: Allowed virtual machine size SKUs
+#     parameters:
+#       listOfAllowedSKUs:
+#         value: []
+#   scopes:
+#   - management_group_name: mg-havizerotrust-tms-landingzone
+    
+## SC landing zone management group
+
+# - name: lz-sc
+#   policy_assignments:
+#   - policy_definition_name: Allowed virtual machine size SKUs
+#     parameters:
+#       listOfAllowedSKUs:
+#         value: []
+#   scopes:
+#   - management_group_name: mg-havizerotrust-sc-landingzone
+
+# ## SC NonProd Internal Subscription
+
+# - name: mg-havizerotrust-int
+#   policy_assignments:
+#     - policy_definition_name: Network interfaces should not have public IPs
+#     - policy_definition_name: Azure SQL Managed Instances should disable public network access
+#       parameters:
+#         effect:
+#           value: Deny
+#     - policy_definition_name: Public network access on Azure SQL Database should be disabled
+#       parameters:
+#         effect:
+#           value: Deny
+#     - policy_definition_name: Public network access should be disabled for MySQL flexible servers
+#       parameters:
+#         effect:
+#           value: Deny
+#     - policy_definition_name: Public network access should be disabled for MySQL servers
+#       parameters:
+#         effect:
+#           value: Deny
+#     - policy_definition_name: Public network access should be disabled for PostgreSQL flexible servers
+#       parameters:
+#         effect:
+#           value: Deny
+#     - policy_definition_name: Public network access should be disabled for PostgreSQL servers
+#       parameters:
+#         effect:
+#           value: Deny
+#     - policy_definition_name: Storage accounts should disable public network access
+#       parameters:
+#         effect:
+#           value: Deny
+#   scopes:
+#   - management_group_name: mg-havizerotrust-corptech-nonprod-int
+#   - management_group_name: mg-havizerotrust-corptech-prod-int
+#   - management_group_name: mg-havizerotrust-sc-nonprod-int
+#   - management_group_name: mg-havizerotrust-sc-prod-int
+#   - management_group_name: mg-havizerotrust-tms-nonprod-int
+#   - management_group_name: mg-havizerotrust-tms-prod-int
